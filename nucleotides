@@ -1,0 +1,23 @@
+while True:
+    sequence = input("Enter your DNA sequence or exit ")
+    sequence = sequence.upper()
+
+    if sequence.lower() == "exit":
+        print("Exiting program.")
+        break
+
+    nucleotides = {"A": 0, "T": 0, "G": 0, "C": 0}
+    for base in nucleotides:
+        nucleotides[base] = sequence.count(base)
+    
+    for base, count in nucleotides.items():
+        print(base, ":", count)
+    
+    gc_count = nucleotides["G"] + nucleotides["C"]
+    at_count = nucleotides["A"] + nucleotides["T"]
+
+    gc = (gc_count / len(sequence)) * 100
+    at = (at_count / len(sequence)) * 100
+
+    print(f"The GC content percentage is: {gc:.2f}%")
+    print(f"The AT content percentage is: {at:.2f}%")
